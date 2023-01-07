@@ -1,0 +1,54 @@
+ public function academy_detail(){
+        $domain_id = $_SESSION['domain_registration_id'];
+        $data=[];
+        $details = $this->Setting_model->get_academy_detail($domain_id);       
+        $data['details'] = $details;
+      
+        $this->load->view('include/header_new');        
+        if($this->input->post()) {       
+
+            $post_data = array(
+                'fb_link'		    =>  $this->input->post('fb_link'),
+                'insta_link'	    =>  $this->input->post('insta_link'),
+                'twitter_link'		=>	$this->input->post('twitter_link'),
+                'linkedin_link'		=>	$this->input->post('linkedin_link'),
+                'youtube_link'		=>	$this->input->post('youtube_link'),
+                'about'		        =>	$this->input->post('about'),				
+                'address'	        =>	$this->input->post('address'),
+                'primary_email'		=>  $this->input->post('pri_email'),	
+                'secondary_email'	=> 	$this->input->post('sec_email'),
+                'primary_phone'		=> 	$this->input->post('pri_phone'),
+                'secondary_phone'	=>  $this->input->post('sec_phone'),	
+                'added_on'		    =>  date('Y-m-d H:i:s'),
+                'added_by'		    =>  $this->session->userdata['user_id'], 
+                'domain_id'		    =>  $this->session->userdata['domain_registration_id'],
+            );         
+
+            if(!empty($details)){           
+               
+                $res = $this->Setting_model->update_academy_detail($details->id,$post_data);
+                if($res){
+                    $this->session->set_flashdata('message', 'Academy details Updated successfully!');				
+				    redirect('setting/banner');
+                }else{
+                    $this->session->set_flashdata('message', 'Not Updated Academy details ');				
+				    redirect('setting/banner');
+                }
+            }else{              
+                $response = $this->Setting_model->save_academy_detail($post_data);               
+                if($response){
+                    $this->session->set_flashdata('message', 'Academy details added successfully!');				
+				    redirect('setting/banner');
+                }else{
+                    $this->session->set_flashdata('message', 'Not Added Academy details ');				
+				    redirect('setting/banner');
+                }
+            }        
+
+        }else{
+            $this->session->set_flashdata('message', 'Something is Wrong!');		
+            redirect('setting/banner');
+        }       
+        $this->load->view('setting/banner',$data);
+        $this->load->view('include/footer_new');
+    }

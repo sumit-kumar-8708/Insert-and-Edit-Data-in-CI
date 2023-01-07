@@ -1,0 +1,37 @@
+function save_academy_detail($post_data){		
+		if($post_data){			
+			$this->db->insert('domain_registration_attr',$post_data);
+			$id = $this->db->insert_id();
+			return $id;
+		}else{
+			return false;
+		}
+		
+	}
+
+	function update_academy_detail($id,$post_data){
+		// print_r($id);die;
+		if($id>0){
+			$this->db->where('id',$id);
+			$this->db->update('domain_registration_attr',$post_data);
+			return true;
+		}else{
+			return false;
+		}           
+	}
+
+	function get_academy_detail($domain_id){
+		if($domain_id){
+			$this->db->select('*');
+			$this->db->from('domain_registration_attr');
+			$this->db->where('domain_id',$domain_id);
+			$data = $this->db->get()->row();
+			if($data){
+				return $data;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}           
+	}

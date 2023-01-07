@@ -1,0 +1,66 @@
+ <h4 class="text-danger mt-4"><b>Academy Details :</b></h4>
+    
+
+    <div class='card p-2 mt-2'>
+        <form action="<?= base_url().'setting/academy_detail/'.$id ?>" method="post">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="pri_email" class="bold_word">Primary Email :</label>
+                    <input name="pri_email" type="email" class="form-control " id="pri_email" value="<?= $details->primary_email; ?>"
+                        placeholder="Enter email">
+                </div>
+                <div class="col-md-3">
+                    <label for="sec_email" class="bold_word">secondary Email :</label>
+                    <input name="sec_email" type="email" class="form-control " id="sec_email" 
+                        placeholder="Enter email" value="<?= $details->secondary_email; ?>">
+                </div>
+                <div class="col-md-3">
+                    <label for="pri_phone" class="bold_word">Primary Phone :</label>
+                    <input name="pri_phone" type="number" class="form-control " id="pri_phone" placeholder="Enter Phone" value="<?= $details->primary_phone; ?>" >
+                </div>
+                <div class="col-md-3">
+                    <label for="sec_phone" class="bold_word">secondary Phone :</label>
+                    <input name="sec_phone" type="number" class="form-control " id="sec_phone" placeholder="Enter Phone" value="<?= $details->secondary_phone; ?>" >
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-3">
+                    <label for="fb_link" class="bold_word">Facebook Link :</label>
+                    <input name="fb_link" type="text" class="form-control " id="fb_link" value="<?= $details->fb_link; ?>"
+                        placeholder="Enter Facebook-Link">
+                </div>
+                <div class="col-md-3">
+                    <label for="insta_link" class="bold_word">Instagram Link :</label>
+                    <input name="insta_link" type="text" class="form-control " id="insta_link" value="<?= $details->insta_link; ?>"
+                        placeholder="Enter Instagram-Link">
+                </div>
+                <div class="col-md-3">
+                    <label for="twitter_link" class="bold_word">Twitter Link :</label>
+                    <input name="twitter_link" type="text" class="form-control " id="twitter_link" placeholder="Enter Twitter-Link" value="<?= $details->twitter_link; ?>" >
+                </div>
+                <div class="col-md-3">
+                    <label for="linkdin_link" class="bold_word">Linkdin Link :</label>
+                    <input name="linkedin_link" type="text" class="form-control " id="linkdin_link" placeholder="Enter Linkdin-Link" value="<?= $details->linkedin_link; ?>" >
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-3">
+                    <label for="sec_email" class="bold_word">About Academy/Institute :</label>
+                    <textarea name="about" id="" cols="46" rows="4"><?= $details->about; ?></textarea>
+                </div>
+                <div class="col-md-3">
+                    <label for="address" class="bold_word">Address :</label>
+                    <textarea name="address" id="address" cols="46" rows="4"><?= $details->address; ?></textarea>
+                </div>
+                <div class="col-md-3">
+                    <label for="youtube_link" class="bold_word">Youtube Link :</label>
+                    <input name="youtube_link" type="text" class="form-control " id="youtube_link" value="<?= $details->youtube_link; ?>"
+                        placeholder="Enter Youtube-Link">
+                </div>
+                <div class="col-md-3 p-2">
+                    <!-- <button type="submit" class="btn btn-info text-white mt-4 ml-2">Submit</button> -->
+                    <button type="submit" class="btn btn-info text-white mt-4 ml-2">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
